@@ -1,412 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alexandra Chen — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <title>Samitthisak | Futuristic Resume</title>
+  :root {
+    --ink:      #1a1714;
+    --ink-mid:  #5a534d;
+    --ink-soft: #9b9189;
+    --paper:    #faf8f4;
+    --cream:    #f0ece4;
+    --rule:     #ddd8cf;
+    --accent:   #b5432a;
+    --accent-lt:#f5ede9;
+    --gold:     #c9a84c;
+  }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; max-width: none; }
+    .no-print { display: none; }
+  }
 
-  <style>
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+  .no-print {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .no-print button {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .no-print button:hover { background: var(--ink); color: var(--paper); }
 
-    body{
-      font-family:'Orbitron',sans-serif;
-      background:black;
-      overflow-x:hidden;
-      color:white;
-    }
+  .page {
+    background: var(--paper);
+    max-width: 860px;
+    margin: 0 auto;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    animation: fadeUp 0.6s ease both;
+  }
 
-    /* Animated Background */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-    body::before{
-      content:'';
-      position:fixed;
-      width:200%;
-      height:200%;
-      background:
-      radial-gradient(circle,#00ffff22 1px,transparent 1px);
-      background-size:40px 40px;
-      animation:moveBg 20s linear infinite;
-      z-index:-2;
-    }
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    padding: 3rem 3rem 1.5rem;
+    border-bottom: 2px solid var(--ink);
+  }
 
-    @keyframes moveBg{
-      0%{
-        transform:translate(0,0);
-      }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
 
-      100%{
-        transform:translate(-200px,-200px);
-      }
-    }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
 
-    /* Hero */
+  .title-line {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    letter-spacing: 0.02em;
+  }
 
-    .hero{
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      position:relative;
-    }
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+  }
 
-    .glow{
-      position:absolute;
-      width:500px;
-      height:500px;
-      background:#00ffff33;
-      border-radius:50%;
-      filter:blur(120px);
-      z-index:-1;
-      animation:pulse 4s infinite;
-    }
+  .contact-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mid);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--accent); }
 
-    @keyframes pulse{
-      0%,100%{
-        transform:scale(1);
-      }
+  .accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 60%, transparent 100%);
+    margin: 0 3rem;
+  }
 
-      50%{
-        transform:scale(1.2);
-      }
-    }
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+  }
 
-    .hero h1{
-      font-size:90px;
-      letter-spacing:10px;
-      text-shadow:0 0 20px cyan;
-      animation:fadeIn 2s ease;
-    }
+  .main {
+    padding: 2.5rem 2.5rem 3rem 3rem;
+    border-right: 1px solid var(--rule);
+  }
 
-    .hero p{
-      margin-top:20px;
-      font-size:24px;
-      color:#cccccc;
-      animation:fadeIn 3s ease;
-    }
+  .sidebar {
+    padding: 2.5rem 2rem 3rem;
+    background: var(--cream);
+  }
 
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:translateY(30px);
-      }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
 
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
+  .profile-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
 
-    .enter-btn{
-      margin-top:50px;
-      padding:18px 40px;
-      border:2px solid cyan;
-      background:transparent;
-      color:cyan;
-      font-size:20px;
-      cursor:pointer;
-      border-radius:50px;
-      transition:0.4s;
-      text-decoration:none;
-    }
+  .experience { margin-bottom: 2.5rem; }
 
-    .enter-btn:hover{
-      background:cyan;
-      color:black;
-      box-shadow:0 0 30px cyan;
-      transform:scale(1.1);
-    }
+  .job { margin-bottom: 1.75rem; }
 
-    /* Sections */
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
 
-    section{
-      min-height:100vh;
-      padding:100px 10%;
-      position:relative;
-    }
+  .job-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
 
-    .title{
-      font-size:50px;
-      margin-bottom:50px;
-      color:cyan;
-      text-shadow:0 0 15px cyan;
-    }
+  .job-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
 
-    /* Glass Card */
+  .job-company {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
 
-    .glass{
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-      backdrop-filter:blur(10px);
-      border-radius:30px;
-      padding:40px;
-      margin-bottom:30px;
-      transition:0.4s;
-    }
+  .job-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .job-bullets li {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    padding-left: 16px;
+    position: relative;
+    font-weight: 300;
+  }
+  .job-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+    top: 1px;
+  }
 
-    .glass:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 30px #00ffff55;
-    }
+  .job + .job { padding-top: 1.25rem; border-top: 1px dashed var(--rule); }
 
-    .glass h3{
-      color:cyan;
-      margin-bottom:15px;
-      font-size:28px;
-    }
+  .edu-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .edu-school {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
 
-    .glass p{
-      color:#cccccc;
-      line-height:1.8;
-    }
+  .sidebar-section { margin-bottom: 2rem; }
 
-    /* Skills */
+  .skill-group { margin-bottom: 1rem; }
 
-    .skills{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-    }
+  .skill-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
 
-    .skill{
-      padding:15px 30px;
-      border:1px solid cyan;
-      border-radius:50px;
-      transition:0.3s;
-    }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
-    .skill:hover{
-      background:cyan;
-      color:black;
-      box-shadow:0 0 20px cyan;
-      transform:scale(1.1);
-    }
+  .tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    color: var(--ink-mid);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
 
-    /* Timeline */
+  .highlight-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
 
-    .timeline{
-      border-left:2px solid cyan;
-      padding-left:30px;
-    }
+  .highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
 
-    .timeline-item{
-      margin-bottom:50px;
-      position:relative;
-    }
+  .highlight-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+    font-weight: 300;
+  }
 
-    .timeline-item::before{
-      content:'';
-      width:20px;
-      height:20px;
-      background:cyan;
-      border-radius:50%;
-      position:absolute;
-      left:-41px;
-      top:5px;
-      box-shadow:0 0 20px cyan;
-    }
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name { font-size: 12px; color: var(--ink); }
+  .lang-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+  }
 
-    /* Contact */
+  .footer {
+    padding: 1rem 3rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left, .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+  }
 
-    .contact-btn{
-      display:inline-block;
-      margin-top:30px;
-      padding:20px 40px;
-      border-radius:50px;
-      background:cyan;
-      color:black;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.3s;
-    }
-
-    .contact-btn:hover{
-      transform:scale(1.1);
-      box-shadow:0 0 30px cyan;
-    }
-
-    /* Footer */
-
-    footer{
-      text-align:center;
-      padding:40px;
-      color:#666;
-    }
-
-    /* Scroll Smooth */
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    /* Responsive */
-
-    @media(max-width:768px){
-
-      .hero h1{
-        font-size:50px;
-      }
-
-      .hero p{
-        font-size:18px;
-      }
-
-      .title{
-        font-size:36px;
-      }
-
-    }
-
-  </style>
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .page { box-shadow: none; }
+    .header { grid-template-columns: 1fr; gap: 1.25rem; padding: 2rem 1.5rem 1.25rem; }
+    .contact-grid { text-align: left; }
+    .accent-bar { margin: 0 1.5rem; }
+    .body { grid-template-columns: 1fr; }
+    .main { padding: 2rem 1.5rem; border-right: none; border-bottom: 1px solid var(--rule); }
+    .sidebar { padding: 2rem 1.5rem; }
+    .footer { padding: 1rem 1.5rem; flex-direction: column; gap: 4px; text-align: center; }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- HERO -->
+<div class="no-print">
+  <button onclick="window.print()">⌘ Print / Save as PDF</button>
+</div>
 
-  <div class="hero">
+<div class="page">
 
-    <div class="glow"></div>
+  <header class="header">
+    <div class="header-left">
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1>Alexandra<br>Chen</h1>
+      <p class="title-line">Senior Product Designer &amp; Design Systems Lead</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:alex.chen@email.com">alex.chen@email.com</a>
+      <a class="contact-item" href="tel:+14155550182">+1 (415) 555-0182</a>
+      <span class="contact-item">San Francisco, CA</span>
+      <a class="contact-item" href="https://linkedin.com/in/alexchen">linkedin.com/in/alexchen</a>
+      <a class="contact-item" href="https://alexchen.design">alexchen.design</a>
+    </div>
+  </header>
 
-    <h1>SAMITTHISAK</h1>
+  <div class="accent-bar"></div>
 
-    <p>
-      Japanese Interpreter • Production Engineering • Kaizen Specialist
-    </p>
+  <div class="body">
 
-    <a href="#about" class="enter-btn">
-      ENTER SYSTEM
-    </a>
+    <main class="main">
 
+      <section aria-label="Profile">
+        <p class="section-label">Profile</p>
+        <p class="profile-text">
+          Product designer with 8 years of experience crafting end-to-end digital experiences for SaaS and consumer platforms. Passionate about systems thinking, accessibility, and bridging the gap between user needs and engineering constraints. I believe great design is invisible — and that the best products earn their users' trust through clarity and care.
+        </p>
+      </section>
+
+      <section class="experience" aria-label="Work Experience">
+        <p class="section-label">Experience</p>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Senior Product Designer</span>
+            <span class="job-date">2021 — Present</span>
+          </div>
+          <p class="job-company">Notion · San Francisco, CA</p>
+          <ul class="job-bullets">
+            <li>Led redesign of the block editor experience, reducing task completion time by 34% across 20M+ users through targeted usability testing and iterative prototyping.</li>
+            <li>Architected and maintained a 400-component design system adopted across 5 product teams, cutting design-to-engineering handoff time by 50%.</li>
+            <li>Mentored 3 junior designers and introduced bi-weekly design critique sessions, raising the overall quality bar across the product org.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">Product Designer</span>
+            <span class="job-date">2018 — 2021</span>
+          </div>
+          <p class="job-company">Figma · San Francisco, CA</p>
+          <ul class="job-bullets">
+            <li>Designed multiplayer cursor and presence features that became central to Figma's collaborative identity and marketing narrative.</li>
+            <li>Conducted 40+ usability studies informing the component library redesign and inspector panel overhaul.</li>
+            <li>Partnered with engineering to establish performance-driven animation guidelines adopted org-wide.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-title">UX Designer</span>
+            <span class="job-date">2016 — 2018</span>
+          </div>
+          <p class="job-company">IDEO · New York, NY</p>
+          <ul class="job-bullets">
+            <li>Delivered end-to-end research and interaction design for clients in healthcare and fintech across 8 engagements.</li>
+            <li>Facilitated co-design workshops with 100+ participants across 3 continents, synthesising insights into actionable design directions.</li>
+          </ul>
+        </div>
+
+      </section>
+
+      <section aria-label="Education">
+        <p class="section-label">Education</p>
+        <div class="edu-title">B.S. Human-Computer Interaction</div>
+        <div class="edu-school">Carnegie Mellon University</div>
+        <div class="edu-year">2012 — 2016 · Dean's List</div>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+
+      <div class="sidebar-section">
+        <p class="section-label">Skills</p>
+        <div class="skill-group">
+          <p class="skill-group-label">Design</p>
+          <div class="tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">Design systems</span>
+            <span class="tag">Motion</span>
+            <span class="tag">Accessibility</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">Research</p>
+          <div class="tags">
+            <span class="tag">Usability testing</span>
+            <span class="tag">Interviews</span>
+            <span class="tag">Journey mapping</span>
+            <span class="tag">A/B testing</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">Code</p>
+          <div class="tags">
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">React basics</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="section-label">Highlights</p>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p class="highlight-text">Fast Company Innovation by Design finalist, 2023</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p class="highlight-text">Speaker at Config 2022 &amp; Clarity 2023 conferences</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p class="highlight-text">Design systems newsletter, 4,200 subscribers</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p class="highlight-text">Open-source contributor — Radix UI and Storybook</p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="section-label">Languages</p>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Mandarin</span>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">French</span>
+          <span class="lang-level">Conversational</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="section-label">Interests</p>
+        <p style="font-size:12px;line-height:1.7;color:var(--ink-mid);font-weight:300;">
+          Typography &amp; editorial design, open-source tools, ceramic making, and long-distance cycling.
+        </p>
+      </div>
+
+    </aside>
   </div>
 
-  <!-- ABOUT -->
-
-  <section id="about">
-
-    <h2 class="title">ABOUT ME</h2>
-
-    <div class="glass">
-
-      <h3>PROFILE</h3>
-
-      <p>
-        Experienced Japanese Interpreter in Production Engineering department.
-        Specialized in New Model support, machine troubleshooting,
-        Kaizen activity, and communication between Thailand and Japan teams.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- SKILLS -->
-
-  <section>
-
-    <h2 class="title">SKILLS</h2>
-
-    <div class="skills">
-
-      <div class="skill">Japanese</div>
-      <div class="skill">English</div>
-      <div class="skill">Interpretation</div>
-      <div class="skill">Production Engineering</div>
-      <div class="skill">Kaizen</div>
-      <div class="skill">Problem Solving</div>
-      <div class="skill">PowerPoint</div>
-      <div class="skill">HTML/CSS</div>
-      <div class="skill">Project Coordination</div>
-
-    </div>
-
-  </section>
-
-  <!-- EXPERIENCE -->
-
-  <section>
-
-    <h2 class="title">EXPERIENCE</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item glass">
-
-        <h3>Japanese Interpreter - PE Department</h3>
-
-        <p>
-          Support live interpretation during weekly meetings,
-          New Model activities, machine troubleshooting,
-          and production coordination.
-        </p>
-
-      </div>
-
-      <div class="timeline-item glass">
-
-        <h3>Kaizen Activity</h3>
-
-        <p>
-          Improve process efficiency, reduce MUDA,
-          and support production optimization projects.
-        </p>
-
-      </div>
-
-      <div class="timeline-item glass">
-
-        <h3>Project Support</h3>
-
-        <p>
-          Support communication with Japan side regarding
-          investment, equipment modification, and project progress.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section>
-
-    <h2 class="title">CONTACT</h2>
-
-    <div class="glass">
-
-      <h3>LET'S WORK TOGETHER</h3>
-
-      <p>
-        Available for Production Engineering support,
-        Japanese interpretation, Kaizen activities,
-        and project coordination.
-      </p>
-
-      <a href="#" class="contact-btn">
-        CONTACT ME
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 SAMITTHISAK FUTURISTIC RESUME
+  <footer class="footer">
+    <span class="footer-left">Alexandra Chen · Resume 2025</span>
+    <span class="footer-right">References available on request</span>
   </footer>
 
-</body>
+</div>
 
+</body>
 </html>
